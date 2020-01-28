@@ -38,6 +38,7 @@ public class Shooter extends SubsystemBase {
     initShooterEncoder();
     initHoodEncoder();
   }
+  //test
 
   private void initShooterEncoder()
   {
