@@ -12,8 +12,10 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.cmdAutoLine;
 import frc.robot.commands.cmdDriveTrain;
+import frc.robot.commands.cmdballStorage;
 import frc.robot.commands.limelightDrive;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -27,10 +29,12 @@ public class RobotContainer {
   private Joystick Driver = new Joystick(0);
 
   private final DriveTrain driveTrain = new DriveTrain();
+  private final Intake intake = new Intake();
 
   private final cmdAutoLine autoCommand = new cmdAutoLine(driveTrain, 4.5, 0.5);  //Duration, speed
 
   private final limelightDrive limelightDrive = new limelightDrive(driveTrain);
+  private final cmdballStorage ballStorage = new cmdballStorage(intake);
 
 
 
@@ -56,6 +60,9 @@ public class RobotContainer {
 
     JoystickButton runLimelight = new JoystickButton(Driver, 2);
     runLimelight.whileHeld(limelightDrive);
+
+    JoystickButton runIntake = new JoystickButton(Driver, 3);
+    runIntake.whileHeld(ballStorage);
   }
 
 

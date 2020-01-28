@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.TalonFXSensorCollection;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -20,7 +21,8 @@ public class DriveTrain extends SubsystemBase {
    private TalonFX leftMotor2;
    private TalonFX rightMotor2;
 
-   
+   //TalonFXSensorCollection leftMotorEncoder = new TalonFXSensorCollection(leftMotor);
+  
    private Limelight lm = new Limelight();   // lm = limelight
 
    private double DRIVE_K = 0.1;
@@ -36,16 +38,16 @@ public class DriveTrain extends SubsystemBase {
     rightMotor2 = new TalonFX(Constants.DriveConstrants.rightMotor2);
 
     leftMotor.setInverted(false);
-    rightMotor.setInverted(true);
+    rightMotor.setInverted(false); 
     leftMotor2.setInverted(false);
-    rightMotor2.setInverted(true);
+    rightMotor2.setInverted(false);
   }
 
   public void turnMotors(double left, double right) {
-    leftMotor.set(ControlMode.PercentOutput, -left);
-    rightMotor.set(ControlMode.PercentOutput, -right);
+    leftMotor.set(ControlMode.PercentOutput, left);
+    rightMotor.set(ControlMode.PercentOutput, -right);  //-
     leftMotor2.set(ControlMode.PercentOutput, left);
-    leftMotor2.set(ControlMode.PercentOutput, right);
+    rightMotor2.set(ControlMode.PercentOutput, -right);  //-
   }
 
   public void targetArea()
@@ -64,6 +66,8 @@ public class DriveTrain extends SubsystemBase {
 
   //@Override
   public void periodic() {
+
+    //leftMotorEncoder.getIntegratedSensorPosition();
 
   }
 }
