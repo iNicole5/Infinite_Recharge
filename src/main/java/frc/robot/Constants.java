@@ -17,19 +17,26 @@ package frc.robot;
  */
 public final class Constants {
     public static final class DriveConstrants {
-        public static final int leftMotor = 3;
-        public static final int rightMotor = 1;
-        public static final int leftMotor2 = 2;
-        public static final int rightMotor2 = 0;
+        public static final int leftMotor = 3; //3   //Comp Bot = 14
+        public static final int rightMotor = 1; //1   //Comp Bot = 2
+        public static final int leftMotor2 = 2; //2  //Comp Bot = 15
+        public static final int rightMotor2 = 0; //0  ////Comp Bot = 0
     }
 
     public static final class ShooterConstrants {
-        public static final int shooterMotorMaster = 4;
-        public static final int shooterMotorSlave = 5;
+        public static final int shooterMotorMaster = 6; //4  //Comp Bot = 6
+        public static final int shooterMotorSlave = 4; //5    //Comp Bot = 4
 
-        public static final int ballStorageMotor = 6;
+        public static final int hoodMotor = 8;  //7     //Comp Bot = 8
+    }
 
-        public static final int hoodMotor = 7;
+    public static final class IntakeConstrants {
+        public static final int intake = 3;  //8      //Comp Bot = 3
+        public static final int ballStorageMotor = 5; //6     //Comp Bot = 5
+    }
+
+    public static final class ClimberConstrants {
+        public static final int irrectionmotor = 9;
     }
 
     public static final class OIConstrants {

@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018-2019 FIRST. All Rights Reserved.                        */
+/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -7,53 +7,41 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.DriveTrain;
-
-
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Intake;
 
-/**
- * An example command that uses an example subsystem.
- */
-public class cmdDriveTrain extends CommandBase {
+public class cmdTestEncoder extends CommandBase {
+  /**
+   * Creates a new cmdTestEncoder.
+   */
 
-  private final DriveTrain drive;
-  private final Joystick joystick;
+   private Intake intake2;
 
-  public cmdDriveTrain(DriveTrain drive, Joystick joystick) {
-    this.joystick = joystick;
-    this.drive = drive;
-    addRequirements(drive);
+  public cmdTestEncoder(Intake intake2) {
+    // Use addRequirements() here to declare subsystem dependencies.
+    this.intake2 = intake2;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double move = joystick.getRawAxis(1) * 0.8;   
-    double turn = joystick.getRawAxis(4) * 0.6;
-
-    double left = move - turn;
-    double right = move + turn;
-
-    drive.turnMotors(left, right);
+   // intake2.testEncoder();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    drive.stopDriveMotors();
+    intake2.stopBallStorage();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false; 
-}
+    return false;
+  }
 }

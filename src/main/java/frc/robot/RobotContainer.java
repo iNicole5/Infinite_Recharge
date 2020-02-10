@@ -10,14 +10,25 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.cmdAutoBack;
+import frc.robot.commands.cmdAutoForward;
 import frc.robot.commands.cmdAutoLine;
+import frc.robot.commands.cmdClimber;
 import frc.robot.commands.cmdDriveTrain;
+import frc.robot.commands.cmdHood;
+import frc.robot.commands.cmdIntake;
+import frc.robot.commands.cmdIntermediate;
+import frc.robot.commands.cmdShoot;
+import frc.robot.commands.cmdTestEncoder;
 import frc.robot.commands.cmdballStorage;
 import frc.robot.commands.limelightDrive;
+import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -27,14 +38,29 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   private Joystick Driver = new Joystick(0);
+  private Joystick Driver2 = new Joystick(1);
 
   private final DriveTrain driveTrain = new DriveTrain();
   private final Intake intake = new Intake();
+  private final Shooter shooter = new Shooter();
+  private final Climber climber = new Climber();
 
   private final cmdAutoLine autoCommand = new cmdAutoLine(driveTrain, 4.5, 0.5);  //Duration, speed
 
   private final limelightDrive limelightDrive = new limelightDrive(driveTrain);
   private final cmdballStorage ballStorage = new cmdballStorage(intake);
+ // private final cmdTestEncoder testRevolutions = new cmdTestEncoder(intake);
+ private final cmdIntermediate intermediateIntake = new cmdIntermediate(intake);
+  private final cmdIntake CMDintake = new cmdIntake(intake, false);
+  private final cmdShoot Shoot = new cmdShoot(shooter, intake, false);
+  private final cmdHood HoodForward = new cmdHood(shooter, true);
+  private final cmdHood HoodBack = new cmdHood(shooter, false);
+  private final cmdClimber cmdClimberUP = new cmdClimber(climber, true);
+  private final cmdClimber cmdClimberDown = new cmdClimber(climber, false);
+  private final cmdAutoForward autoForward = new cmdAutoForward(driveTrain);
+  private final cmdAutoBack autoBack = new cmdAutoBack(driveTrain);
+
+  private Trigger bottomLimit = new Trigger(() -> intake.getBottomSensor());
 
 
 
@@ -61,8 +87,35 @@ public class RobotContainer {
     JoystickButton runLimelight = new JoystickButton(Driver, 2);
     runLimelight.whileHeld(limelightDrive);
 
-    JoystickButton runIntake = new JoystickButton(Driver, 3);
-    runIntake.whileHeld(ballStorage);
+    // JoystickButton runIntake = new JoystickButton(Driver, 3);
+    // runIntake.whileHeld(ballStorage);
+
+    JoystickButton middleIntake = new JoystickButton(Driver, 4);
+    bottomLimit.whenActive(intermediateIntake, false);
+
+    JoystickButton floorIntake = new JoystickButton(Driver, 5);
+    floorIntake.whileHeld(CMDintake, true);
+
+    JoystickButton fire = new JoystickButton(Driver, 6);
+    fire.whileHeld(Shoot, true);
+
+    JoystickButton hoodForward = new JoystickButton(Driver, 7);
+    hoodForward.whileHeld(HoodForward, true);
+
+    JoystickButton hoodBack = new JoystickButton(Driver, 8);
+    hoodBack.whileHeld(HoodBack, true);
+
+    JoystickButton irrectionUp = new JoystickButton(Driver, 9);
+    irrectionUp.whileHeld(cmdClimberUP, true);
+
+    JoystickButton irrectionDown = new JoystickButton(Driver, 10);
+    irrectionDown.whileHeld(cmdClimberDown, true);
+
+    JoystickButton testmultipleAuto = new JoystickButton(Driver2, 1);
+    //testmultipleAuto.whenPressed(driveTrain.moveForward(andThen(driveTrain.moveBack())));
+
+
+    
   }
 
 

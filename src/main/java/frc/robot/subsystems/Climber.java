@@ -7,12 +7,33 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class Climber extends SubsystemBase {
 
-  public Climber() {
+  VictorSPX irrectionMotor;
 
+  public Climber() {
+    irrectionMotor = new VictorSPX(Constants.ClimberConstrants.irrectionmotor);
+  }
+
+  public void irrection(boolean direction)
+  {
+    if(direction)
+    {
+      irrectionMotor.set(ControlMode.PercentOutput, 1);
+    } else {
+      irrectionMotor.set(ControlMode.PercentOutput, -1);
+    }
+  }
+
+  public void climberStop()
+  {
+    irrectionMotor.set(ControlMode.PercentOutput, 0);
   }
 
   @Override
