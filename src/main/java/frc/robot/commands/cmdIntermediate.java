@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018-2019 FIRST. All Rights Reserved.                        */
+/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -7,53 +7,47 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.DriveTrain;
-
-
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Intake;
 
-/**
- * An example command that uses an example subsystem.
- */
-public class cmdDriveTrain extends CommandBase {
+public class cmdIntermediate extends CommandBase {
 
-  private final DriveTrain drive;
-  private final Joystick joystick;
+  private Intake subIntake;
 
-  public cmdDriveTrain(DriveTrain drive, Joystick joystick) {
-    this.joystick = joystick;
-    this.drive = drive;
-    addRequirements(drive);
+  public cmdIntermediate(Intake subIntake) {
+    // Use addRequirements() here to declare subsystem dependencies.
+    this.subIntake = subIntake;
+    addRequirements(subIntake);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
+    //subIntake.intakeStop();
+    // subIntake.increaseBalls();
+    subIntake.incrementBalls();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double move = joystick.getRawAxis(1) * 0.8;   
-    double turn = joystick.getRawAxis(4) * 0.6;
+      subIntake.incrementBalls();
+      //subIntake.indexBall();
+       System.out.println("EXECUTE");
 
-    double left = move - turn;
-    double right = move + turn;
-
-    drive.turnMotors(left, right);
+    // subIntake.incrementBalls();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    drive.stopDriveMotors();
+    //   subIntake.stopBallStorage();
+    subIntake.stopBallStorage();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false; 
-}
+    return subIntake.getMiddleSwitch();
+  }
 }
