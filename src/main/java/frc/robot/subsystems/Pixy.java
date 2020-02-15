@@ -9,6 +9,8 @@ package frc.robot.subsystems;
 
 import java.util.ArrayList;
 
+import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import io.github.pseudoresonance.pixy2api.*;
@@ -16,6 +18,54 @@ import io.github.pseudoresonance.pixy2api.Pixy2CCC.Block;
 
 public class Pixy extends SubsystemBase {
 
+  private SerialPort arduino;
+  private Timer timer;
+
+  public void mainCode()
+  {
+    try {
+      arduino = new SerialPort(9600, SerialPort.Port.kUSB);
+      System.out.println("Connected on kUSB!");
+    } catch (Exception e) {
+      System.out.println("Failed to connect on kUSB, trying kUSB1");
+    }
+
+    try {
+      arduino = new SerialPort(9600, SerialPort.Port.kUSB1);
+      System.out.println("Connected on kUSB1!");
+    } catch (Exception e1) {
+      System.out.println("Failed to connect on kUSB1, trying kUSB2");
+    }
+
+    try {
+      arduino = new SerialPort(9600, SerialPort.Port.kUSB2);
+      System.out.println("Connected on kUSB2!");
+    } catch (Exception e2) {
+      System.out.println("Failed to connect on kUSB2, all connections attepted");
+    }
+
+    timer = new Timer();
+    timer.start();
+  }
+
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+    if(timer.get() > 5)
+    {
+      System.out.println("Wrote to arduino");
+      arduino.write(new byte[] {0x12}, 1);
+      timer.reset();
+    }
+    if (arduino.getBytesReceived() > 0)
+    {
+      System.out.println(arduino.readString());
+    }
+  }
+}
+
+
+/*
   private Pixy2 pixycam;
   boolean isCamera = false;
   int state = -1;
@@ -50,9 +100,4 @@ public class Pixy extends SubsystemBase {
       SmartDashboard.putBoolean("present", false);
       SmartDashboard.putNumber("size", blocks.size());
   }
-
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
-}
+*/
