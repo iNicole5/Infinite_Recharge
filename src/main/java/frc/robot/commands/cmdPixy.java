@@ -8,19 +8,18 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Pixy;
 
-public class limelightDrive extends CommandBase {
+public class cmdPixy extends CommandBase {
   /**
-   * Creates a new limelightDrive.
+   * Creates a new cmdPixy.
    */
 
-   private DriveTrain drive;
-
-  public limelightDrive(DriveTrain drive) {
+   private Pixy pixy;
+  public cmdPixy(Pixy pixy) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.drive = drive;
-    addRequirements(drive);
+    this.pixy = pixy;
+    addRequirements(pixy);
   }
 
   // Called when the command is initially scheduled.
@@ -31,13 +30,11 @@ public class limelightDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drive.targetArea();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    drive.stopDriveMotors();
   }
 
   // Returns true when the command should end.

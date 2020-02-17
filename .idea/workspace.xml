@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c48480b2-1fed-4abc-95b7-8981c13bf6c0" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="PATH_TO_GIT" value="Infinite_Recharge" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1Xb6PUyRDG9wbZpd1Ht53JCChel" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="infinite_recharge" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="frc-characterization drive new" />
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c48480b2-1fed-4abc-95b7-8981c13bf6c0" name="Default Changelist" comment="" />
+      <created>1581302423049</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581302423049</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="0" y="23" key="#Notifications" timestamp="1581303747205">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state x="0" y="23" key="#Notifications/0.23.1440.821@0.23.1440.821" timestamp="1581303747205" />
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581304559655">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1581304559655" />
+    <state x="522" y="266" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1581643897640">
+      <screen x="0" y="23" width="1440" height="813" />
+    </state>
+    <state x="522" y="266" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.813@0.23.1440.813" timestamp="1581643897640" />
+    <state x="229" y="63" width="900" height="722" key="SettingsEditor" timestamp="1581643795368">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="229" y="63" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1581643795368" />
+    <state x="229" y="104" key="SettingsEditor/0.23.1440.816@0.23.1440.816" timestamp="1581303400445" />
+    <state x="16" y="56" width="900" height="722" key="SettingsEditor/0.23.1440.821@0.23.1440.821" timestamp="1581303764396" />
+    <state x="413" y="266" key="com.intellij.ide.util.TipDialog" timestamp="1581643674625">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="413" y="266" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1581643674625" />
+    <state x="329" y="37" width="782" height="825" key="find.popup" timestamp="1581304581645">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="329" y="37" width="782" height="825" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1581304581645" />
+    <state x="385" y="210" key="run.anything.popup" timestamp="1581643779492">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1581643779492" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1581643805882">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1581643805882" />
+  </component>
+  <component name="WpiLibVersionService">
+    <option name="lastChecked" value="20200213172754" />
+  </component>
+</project>
