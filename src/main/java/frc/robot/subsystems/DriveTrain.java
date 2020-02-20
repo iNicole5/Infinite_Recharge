@@ -9,18 +9,13 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
-import com.ctre.phoenix.motorcontrol.TalonFXSensorCollection;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import io.github.pseudoresonance.pixy2api.Pixy2;
-import io.github.pseudoresonance.pixy2api.Pixy2.LinkType;
 
 public class DriveTrain extends SubsystemBase {
 
@@ -29,7 +24,7 @@ public class DriveTrain extends SubsystemBase {
   private TalonFX leftMotor2;
   private TalonFX rightMotor2;
 
-  private DoubleSolenoid shifter = new DoubleSolenoid(1, 0, 1);
+  private DoubleSolenoid shifter = new DoubleSolenoid(0, 1);
 
   private Limelight lm = new Limelight(); // lm = limelight
 
@@ -44,27 +39,27 @@ public class DriveTrain extends SubsystemBase {
     leftMotor2 = new TalonFX(Constants.DriveConstrants.leftMotor2);
     rightMotor2 = new TalonFX(Constants.DriveConstrants.rightMotor2);
 
-    leftMotor2.follow(leftMotor);
-    rightMotor2.follow(rightMotor);
-
-    leftMotor.setInverted(false);
-    rightMotor.setInverted(true);
+    //leftMotor2.follow(leftMotor);
+    //rightMotor2.follow(rightMotor);
 
     //leftMotor.setInverted(false);
-    //rightMotor.setInverted(false);
-    //leftMotor2.setInverted(false);
-    //rightMotor2.setInverted(false);
+    //rightMotor.setInverted(true);
+
+    leftMotor.setInverted(false);
+    rightMotor.setInverted(false);
+    leftMotor2.setInverted(false);
+    rightMotor2.setInverted(false);
 
     leftMotor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
   }
 
   public void turnMotors(double left, double right) {
-    //leftMotor.set(ControlMode.PercentOutput, left);
-    //rightMotor.set(ControlMode.PercentOutput, -right); // -
-    //leftMotor2.set(ControlMode.PercentOutput, left);
-    //rightMotor2.set(ControlMode.PercentOutput, -right); // -
     leftMotor.set(ControlMode.PercentOutput, left);
-    rightMotor.set(ControlMode.PercentOutput, right);
+    rightMotor.set(ControlMode.PercentOutput, -right); // -
+    leftMotor2.set(ControlMode.PercentOutput, left);
+    rightMotor2.set(ControlMode.PercentOutput, -right); // -
+    //leftMotor.set(ControlMode.PercentOutput, left);
+    //rightMotor.set(ControlMode.PercentOutput, right);
   }
 
   public void targetArea()
@@ -91,29 +86,6 @@ public class DriveTrain extends SubsystemBase {
      }
   }
 
-  public void moveForward()
-  {
-    int leftMotorEncoder = leftMotor.getSelectedSensorPosition(0);
-    if (leftMotorEncoder < 10000)
-    {
-      System.out.printf("Drive Encoder %d |", leftMotorEncoder);
-      turnMotors(.25, .25);
-    } else {
-      stopDriveMotors();
-    }
-  }
-
-  public void moveBack()
-  {
-    int leftMotorEncoder = leftMotor.getSelectedSensorPosition(0);
-    if(leftMotorEncoder > 10000)
-    {
-      turnMotors(-.25, -.25);
-    } else {
-      stopDriveMotors();
-    }
-  }
-
 
 
   //@Override
@@ -121,12 +93,6 @@ public class DriveTrain extends SubsystemBase {
     //leftMotor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
     int leftMotorEncoder = leftMotor.getSelectedSensorPosition(0);
     SmartDashboard.putNumber("Left Encoder", leftMotorEncoder);
-
-
-//do {
-  //turnMotors(.25, .25);
-//} while(leftMotorEncoder < 1643);
-
 
   }
 }

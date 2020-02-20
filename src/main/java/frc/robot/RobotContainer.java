@@ -10,12 +10,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.cmdAutoBack;
-import frc.robot.commands.cmdAutoForward;
 import frc.robot.commands.cmdAutoLine;
 import frc.robot.commands.cmdClimber;
 import frc.robot.commands.cmdDriveTrain;
 import frc.robot.commands.cmdHood;
+import frc.robot.commands.cmdHookLeveler;
 import frc.robot.commands.cmdIntake;
 import frc.robot.commands.cmdIntermediate;
 import frc.robot.commands.cmdShoot;
@@ -57,8 +56,8 @@ public class RobotContainer {
   private final cmdHood HoodBack = new cmdHood(shooter, false);
   private final cmdClimber cmdClimberUP = new cmdClimber(climber, true);
   private final cmdClimber cmdClimberDown = new cmdClimber(climber, false);
-  private final cmdAutoForward autoForward = new cmdAutoForward(driveTrain);
-  private final cmdAutoBack autoBack = new cmdAutoBack(driveTrain);
+  private final cmdHookLeveler Hookleveler = new cmdHookLeveler(true, climber); 
+
 
   private Trigger bottomLimit = new Trigger(() -> intake.getBottomSensor());
 
@@ -113,6 +112,13 @@ public class RobotContainer {
 
     JoystickButton testmultipleAuto = new JoystickButton(Driver2, 1);
     //testmultipleAuto.whenPressed(driveTrain.moveForward(andThen(driveTrain.moveBack())));
+
+    JoystickButton levelerButtonRight = new JoystickButton(Driver2, 3);
+    levelerButtonRight.whileHeld(Hookleveler, true);
+
+    JoystickButton levelerButtonLeft = new JoystickButton(Driver2, 4);
+    levelerButtonLeft.whileHeld(Hookleveler, false);
+
 
 
     

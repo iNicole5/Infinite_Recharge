@@ -16,9 +16,11 @@ import frc.robot.Constants;
 public class Climber extends SubsystemBase {
 
   VictorSPX irrectionMotor;
+  VictorSPX levelerMotor;
 
   public Climber() {
     irrectionMotor = new VictorSPX(Constants.ClimberConstrants.irrectionmotor);
+    levelerMotor = new VictorSPX(Constants.ClimberConstrants.hookLeveler);
   }
 
   public void irrection(boolean direction)
@@ -29,6 +31,22 @@ public class Climber extends SubsystemBase {
     } else {
       irrectionMotor.set(ControlMode.PercentOutput, -1);
     }
+  }
+
+  //Being used for intake
+  public void hookLeveler(boolean direction)
+  {
+    if (direction)
+    {
+      levelerMotor.set(ControlMode.PercentOutput, .50);
+    } else {
+      levelerMotor.set(ControlMode.PercentOutput, -.50);
+    }
+  }
+
+  public void hookLevelerStop()
+  {
+    levelerMotor.set(ControlMode.PercentOutput, 0);
   }
 
   public void climberStop()

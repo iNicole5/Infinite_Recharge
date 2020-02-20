@@ -7,36 +7,40 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Climber;
 
-public class cmdAutoBack extends CommandBase {
+public class cmdHookLeveler extends CommandBase {
   /**
-   * Creates a new cmdTestDriveAuto.
+   * Creates a new cmdHookLeveler.
    */
-  private DriveTrain driveTrain;
-  public cmdAutoBack(DriveTrain driveTrain) {
+
+  private boolean direction;
+  private Climber climber;
+
+  public cmdHookLeveler(boolean direction, Climber climber) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.driveTrain = driveTrain;
-    addRequirements(driveTrain);
+    this.direction = direction;
+    this.climber = climber;
+    addRequirements(climber);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    climber.hookLevelerStop();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveTrain.moveBack();
+    climber.hookLeveler(direction);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    driveTrain.stopDriveMotors();
+    climber.hookLevelerStop();
   }
 
   // Returns true when the command should end.
