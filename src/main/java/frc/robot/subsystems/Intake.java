@@ -47,7 +47,7 @@ public class Intake extends SubsystemBase {
 
   public void initBallStorageEncoder()
   {
-    ballStorageEncoder = new Encoder(4, 5, false, EncodingType.k4X);
+    ballStorageEncoder = new Encoder(14, 15, false, EncodingType.k4X);
     ballStorageEncoder.setSamplesToAverage(5);
     ballStorageEncoder.setDistancePerPulse(1./256.);
     ballStorageEncoder.setReverseDirection(true);

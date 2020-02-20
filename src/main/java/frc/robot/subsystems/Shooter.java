@@ -48,7 +48,7 @@ public class Shooter extends SubsystemBase {
 
   private void initShooterEncoder()
   {
-    //shooterEncoder = new Encoder(2, 3, false, EncodingType.k4X);
+    //shooterEncoder = new Encoder(10, 11, false, EncodingType.k4X);
     //shooterEncoder.setSamplesToAverage(5);
     //shooterEncoder.reset();
   }
